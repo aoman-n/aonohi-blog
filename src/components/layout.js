@@ -6,10 +6,12 @@ import { rhythm, scale } from "../utils/typography"
 class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
+    // const { title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
 
     if (location.pathname === rootPath) {
+    // if (true) {
       header = (
         <h1
           style={{
