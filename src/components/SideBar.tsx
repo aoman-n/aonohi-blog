@@ -27,7 +27,7 @@ const SideBar: any = () => {
           <IconLink
             target="_blank"
             rel="noopener"
-            href={userInfo.githubUrl}>
+            href={userInfo.twitterUrl}>
             <FontAwesomeIcon
               icon={faTwitterSquare}
               size="lg"

@@ -5,6 +5,9 @@ import Helmet from 'react-helmet'
 import Header from '../components/Header'
 import Footer from './Footer'
 
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+
+
 interface layoutProps {
   title: string,
   location: any,
