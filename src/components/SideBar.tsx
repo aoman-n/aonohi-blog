@@ -1,21 +1,39 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
+import { URLS } from '../constants'
+import { color } from '../styles'
 
-import { rhythm } from "../utils/typography"
+// import { StaticQuery, graphql } from "gatsby"
+// import Image from "gatsby-image"
 
-const Bio: any = () => {
+const SideBar: any = () => {
   return (
     <Base>
       <SideSectionTitle>PROFILE</SideSectionTitle>
-      <SideSection>
-        {/* <Profile /> */}
-        eeeeeeeeeeeeeeeeeee
-      </SideSection>
+        <div>
+          <IconLink
+            target="_blank"
+            rel="noopener"
+            href={URLS.githubUrl}>
+            <StyledFontAwesomeIcon
+              icon={faGithubSquare}
+              size="lg"
+            />
+          </IconLink>
+          <IconLink
+            target="_blank"
+            rel="noopener"
+            href={URLS.githubUrl}>
+            <StyledFontAwesomeIcon
+              icon={faTwitterSquare}
+              size="lg"
+            />
+          </IconLink>
+        </div>
       <SideSectionTitle>Navigation</SideSectionTitle>
       <SideSection>
-        articles
         {/* <Tag to="/tags/gatsby">gatsby</Tag> */}
         {/* <Tag to="/tags/netlify">netlify</Tag> */}
       </SideSection>
@@ -23,48 +41,35 @@ const Bio: any = () => {
   )
 }
 
-const bioQuery = graphql`
-  query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-      }
-    }
-  }
-`
-
 const Base = styled.aside`
   box-sizing: border-box;
-  padding: 20px 15px;
-  /* min-width: 320px;
-  padding: 32px 12px;
-  background-color: #F7F8FA;
-  @media (min-width: 980px) {
-    width: 320px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 20px;
-    border-left: 1px #eee solid;
-  } */
+  padding: 20px 12px;
 `
-
 const SideSection = styled.div`
-  /* margin: 12px 0 24px; */
+  margin: 12px 0 24px;
 `
-
 const SideSectionTitle = styled.h2`
-  /* font-size: 16px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
   letter-spacing: 1px;
-  color: #30627a; */
+  color: #30627a;
+`
+const IconLink = styled.a`
+  display: inline-block;
+  box-shadow: none;
+  padding: 0.1em 0.5em;
+  border-bottom: 2px solid ${color.lightBrown};
+  cursor: pointer;
+  :hover {
+    border-bottom: 2px solid ${color.darkBlue};
+    > svg {
+      color: ${color.darkBlue};
+    }
+  }
+`
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  color: #8f8f8f;
 `
 
-export default Bio
+export default SideBar

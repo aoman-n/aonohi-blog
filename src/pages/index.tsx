@@ -60,12 +60,9 @@ const Articles = styled.main`
 const Nav = styled.nav`
   width: 28%;
   background: ${color.lightBrown};
-  border: 8px solid white;
   border-radius: 4px;
-  box-shadow: 0 1px 1px 0px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
   margin: 0;
-  /* text-align: center; */
-  /* grid-column: 2 / 2; */
 `
 
 export const query = graphql`
