@@ -15,7 +15,6 @@ const IndexPage = props => {
   const { title, description, author } = data.site.siteMetadata
   return (
     <Layout title={siteTitle} location={location}>
-      <Header {...{ title, description, author }} />
       <div>
         <p>{count}</p>
         <button onClick={() => setCount(count + 1)}>plus</button>
