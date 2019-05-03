@@ -2,7 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
-import { URLS } from '../constants'
+
+import { userInfo } from '../constants'
 import { color } from '../styles'
 
 // import { StaticQuery, graphql } from "gatsby"
@@ -16,19 +17,21 @@ const SideBar: any = () => {
           <IconLink
             target="_blank"
             rel="noopener"
-            href={URLS.githubUrl}>
-            <StyledFontAwesomeIcon
+            href={userInfo.githubUrl}>
+            <FontAwesomeIcon
               icon={faGithubSquare}
               size="lg"
+              color="#8f8f8f"
             />
           </IconLink>
           <IconLink
             target="_blank"
             rel="noopener"
-            href={URLS.githubUrl}>
-            <StyledFontAwesomeIcon
+            href={userInfo.githubUrl}>
+            <FontAwesomeIcon
               icon={faTwitterSquare}
               size="lg"
+              color="#8f8f8f"
             />
           </IconLink>
         </div>
@@ -67,9 +70,6 @@ const IconLink = styled.a`
       color: ${color.darkBlue};
     }
   }
-`
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: #8f8f8f;
 `
 
 export default SideBar
