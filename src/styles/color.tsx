@@ -7,4 +7,5 @@ export default {
   darkGray: '#808080',
   baseGray: '#a9a9a9',
   lightGray: '#d3d3d3',
+  lightBrown: 'rgb(253, 250, 247)',
 }

@@ -6,28 +6,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostCell from '../components/PostCell'
 import SideBar from '../components/SideBar'
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: calc(100% - 300px) 300px;
-  max-width: 1280px;
-  width: calc(100% - 50px);
-  margin-right: auto;
-  margin-left: auto;
-`
-const Articles = styled.main`
-  max-width: 620px;
-  width: 100%;
-  margin: 20px auto;
-  grid-column: 1 / 2;
-  padding: 0 20px;
-`
-const Nav = styled.nav`
-  grid-column: 2 / 2;
-`
+import { color } from '../styles'
 
 const IndexPage: FC<any> = props => {
-  // const [count, setCount] = useState(0)
   const { data, location } = props
   const posts = data.allContentfulPost.edges
   const siteTitle = data.site.siteMetadata.title
@@ -36,36 +17,56 @@ const IndexPage: FC<any> = props => {
   return (
     <Layout title={siteTitle} location={location}>
       <SEO title="All posts" keywords={[`Gatsby`, `Application`, `React`, `Ruby`, `Ruby on Rails`]} />
-      <Container>
-        <Articles>
-          {posts.map(({node}): any => (
-            <PostCell post={node} />
-          ))}
-          {/* <PostList postList={posts.map(post => post.node)} /> */}
-          {/* {posts.map(post => {
-            const { title, author, content, tags, slug } = post.node
-            return (
-              <div key={title}>
-                <Link to={`/${slug}`}><h3>{title}</h3></Link>
-                {tags.map((tag, i) => (
-                  <span key={`${i}/${tag}`}>{tag}</span>
-                ))}
-                <p>{content.content.slice(0, 20)}</p>
-              </div>
-            )
-          })} */}
-        </Articles>
-        <Nav>
-          <SideBar />
-        </Nav>
-      </Container>
-      {/* <div>
-        <p>{count}</p>
-        <button onClick={() => setCount(count + 1)}>plus</button>
-      </div> */}
+      <BackgroundFlame>
+        <Container>
+          <Articles>
+            {posts.map(({node}) => (
+              <PostCell post={node} />
+            ))}
+          </Articles>
+          <Nav>
+            <SideBar />
+          </Nav>
+        </Container>
+      </BackgroundFlame>
     </Layout>
   )
 }
+const BackgroundFlame = styled.div`
+  /* background: ${color.lightBrown}; */
+  /* background: white; */
+`
+const Container = styled.div`
+  /* display: grid; */
+  /* grid-template-columns: calc(100% - 300px) 300px; */
+  /* max-width: 1280px; */
+  /* width: calc(100% - 50px); */
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  max-width: 900px;
+  margin: 0 auto;
+
+`
+const Articles = styled.main`
+  max-width: 620px;
+  min-width: 400px;
+  /* width: 100%; */
+  padding: 20px 0;
+  margin: 0 auto;
+  /* grid-column: 1 / 2; */
+  padding: 0 20px;
+`
+const Nav = styled.nav`
+  width: 28%;
+  background: ${color.lightBrown};
+  border: 8px solid white;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0px rgba(0,0,0,0.2);
+  margin: 0;
+  /* text-align: center; */
+  /* grid-column: 2 / 2; */
+`
 
 export const query = graphql`
   query {

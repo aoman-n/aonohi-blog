@@ -41,7 +41,9 @@ const bioQuery = graphql`
 `
 
 const Base = styled.aside`
-  min-width: 320px;
+  box-sizing: border-box;
+  padding: 20px 15px;
+  /* min-width: 320px;
   padding: 32px 12px;
   background-color: #F7F8FA;
   @media (min-width: 980px) {
@@ -50,19 +52,19 @@ const Base = styled.aside`
     padding-right: 20px;
     margin-left: 20px;
     border-left: 1px #eee solid;
-  }
+  } */
 `
 
 const SideSection = styled.div`
-  margin: 12px 0 24px;
+  /* margin: 12px 0 24px; */
 `
 
 const SideSectionTitle = styled.h2`
-  font-size: 16px;
+  /* font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
   letter-spacing: 1px;
-  color: #30627a;
+  color: #30627a; */
 `
 
 export default Bio
