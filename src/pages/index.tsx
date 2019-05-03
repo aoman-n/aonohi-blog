@@ -37,10 +37,6 @@ const BackgroundFlame = styled.div`
   /* background: white; */
 `
 const Container = styled.div`
-  /* display: grid; */
-  /* grid-template-columns: calc(100% - 300px) 300px; */
-  /* max-width: 1280px; */
-  /* width: calc(100% - 50px); */
   display: flex;
   justify-content: center;
   padding: 20px 0;
@@ -51,10 +47,8 @@ const Container = styled.div`
 const Articles = styled.main`
   max-width: 620px;
   min-width: 400px;
-  /* width: 100%; */
   padding: 20px 0;
   margin: 0 auto;
-  /* grid-column: 1 / 2; */
   padding: 0 20px;
 `
 const Nav = styled.nav`

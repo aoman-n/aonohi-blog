@@ -1,19 +1,21 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Link, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import { mixin } from '../styles'
 
 interface headerProps {
   title: string,
-  location: any,
+  isRoot: boolean,
+  isTag: boolean,
 }
 
-const Header: FC<headerProps> = ({ title, location }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const tagPath = `${__PATH_PREFIX__}/tags/`
-  const isRoot = location.pathname === rootPath
-  const isTag = location.pathname === tagPath
+/*
+TODO:
+  ヘッダー背景を作成
+  案:qiitaのトップヘッダー背景風、コードのタグを薄文字で散りばめる
+*/
 
+const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
   if (isRoot) {
     return (
       <Container>
@@ -52,6 +54,7 @@ const Container = styled.header`
 `
 const Inner = styled.div`
   animation: ${mixin.fadeInDown} .4s both .3s;
+  text-align: center;
 `
 const BlogTitleArea = styled.div``
 const BlogTitle = styled(Link)`

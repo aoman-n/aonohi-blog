@@ -20,3 +20,23 @@ export const fadeInDown = keyframes`
     -webkit-transform: translateY(0);
   }
 `
+
+export const markdownStyle = css`
+  > h1 {
+    font-size: 1.5em;
+    margin-top: 15px;
+    margin-bottom: 7px;
+  }
+  > h2 {
+    font-size: 1.4em;
+  }
+  > h3 {
+    font-size: 1.3em;
+  }
+  > h4 {
+    font-size: 1.2em;
+  }
+  > p {
+    font-size: 0.9em;
+  }
+`

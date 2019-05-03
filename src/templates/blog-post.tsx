@@ -10,6 +10,7 @@ const Post: FC<any> = props => {
   const { title, author, content, publishedAt, tags } = data.contentfulPost
   const { avatar, name } = author
   const { html } = content.childMarkdownRemark
+  console.log(html)
   return (
     <Layout location={location} title={title}>
       <Header>
@@ -26,7 +27,7 @@ const Post: FC<any> = props => {
       <Main>
         <SnsBar></SnsBar>
         <Article>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <MarkDownStyle dangerouslySetInnerHTML={{ __html: html }} />
           <Logly>
             <li>
             {previous && (
@@ -45,8 +46,11 @@ const Post: FC<any> = props => {
           </Logly>
         </Article>
         <NavBar>
-          nav bar<br/>
-          test
+          <NavBarInner>
+            nav bar<br/>
+            test<br />
+            ok<br />
+          </NavBarInner>
         </NavBar>
       </Main>
     </Layout>
@@ -69,14 +73,14 @@ const HeadInner = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: 80px calc(100% - 80px - 220px) 220px;
-  max-width: 1100px;
+  max-width: 1150px;
   margin-right: auto;
   margin-left: auto;
 `
 const HeadContent = styled.div`
   z-index: 2;
   grid-column: 2 / 3;
-  animation: ${mixin.fadeInDown} .4s both;
+  animation: ${mixin.fadeInDown} .4s both .3s;
   padding: 1em 1em 0 1em;
   max-width: 720px;
 `
@@ -94,6 +98,7 @@ const TopLink = styled(Link)`
   }
 `
 const PostTitle = styled.span`
+  font-size: 0.8em;
   box-shadow: none;
   margin-top: 0.5em;
   margin-bottom: 1em;
@@ -112,10 +117,17 @@ const Main = styled.main`
   padding-bottom: 40px;
   display: grid;
   grid-template-columns: 80px calc(100% - 250px - 80px) 250px;
-  max-width: 1280px;
+  max-width: 1050px;
   width: calc(100% - 50px);
   margin-right: auto;
   margin-left: auto;
+  /* display: grid;
+  display: -ms-grid;
+  grid-template-columns: 80px calc(100% - 300px - 80px) 300px;
+  max-width: 1000px;
+  width: calc(100% - 50px);
+  margin-right: auto;
+  margin-left: auto; */
 `
 const SnsBar = styled.nav`
   position: sticky;
@@ -129,16 +141,22 @@ const Article = styled.article`
   grid-column: 2 / 3;
   padding: 16px;
 `
+const MarkDownStyle = styled.div`
+  color: ${color.fontGray};
+  animation: ${mixin.fadeInDown} .4s both .3s;
+  ${mixin.markdownStyle}
+`
 const NavBar = styled.nav`
   grid-column: 3 / 4;
+  margin: 0;
+`
+const NavBarInner = styled.div`
   position: sticky;
-  top: 0;
-  will-change: transform;
-  width: 250px;
-  max-height: 100vh;
-  margin-top: 3.5rem;
-  background: #f6f6f6;
+  top: 20px;
   padding: 15px;
+  background: ${color.lightBrown};
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
 `
 const Logly = styled.ul`
   display: flex;

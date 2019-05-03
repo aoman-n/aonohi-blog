@@ -12,9 +12,9 @@ interface layoutProps {
 
 const Layout: FC<layoutProps> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
-  // const tagPath = `${__PATH_PREFIX__}/tags/`
+  const tagPath = `${__PATH_PREFIX__}/tags/`
   const isRoot = location.pathname === rootPath
-  // const isTag = location.pathname === tagPath
+  const isTag = location.pathname === tagPath
 
   return (
     <Container>
@@ -25,9 +25,9 @@ const Layout: FC<layoutProps> = ({ location, title, children }) => {
           content="Ea1K1N5NXjUJEV6XxsrA2va96TOyyIyuSdQE5gLLNu4"
         />
       </Helmet>
-      <Header {...{ location, title }} />
+      <Header {...{ isRoot, isTag, title }} />
       {children}
-      <Footer isRoot={isRoot} />
+      <Footer {...{ isRoot }} />
     </Container>
   )
 }
