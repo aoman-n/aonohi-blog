@@ -21,7 +21,7 @@ const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
       <Container>
         <Inner>
           <BlogTitleArea>
-            <BlogTitle>{title}</BlogTitle>
+            <BlogTitle to="/">{title}</BlogTitle>
           </BlogTitleArea>
           <Description>Web developer blog.</Description>
         </Inner>
@@ -32,7 +32,7 @@ const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
       <Container>
         <Inner>
           <BlogTitleArea>
-            <BlogTitle>{title}</BlogTitle>
+            <BlogTitle to="/">{title}</BlogTitle>
           </BlogTitleArea>
           <Description>Tag page.</Description>
         </Inner>

@@ -47,6 +47,9 @@ const SideBar: any = () => {
 const Base = styled.aside`
   box-sizing: border-box;
   padding: 20px 12px;
+  background: ${color.lightBrown};
+  border-radius: 4px;
+  box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
 `
 const SideSection = styled.div`
   margin: 12px 0 24px;

@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
 
-import Header from '../components/Header'
+import Header from './Header'
 import Footer from './Footer'
 
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';

@@ -2,7 +2,7 @@ import React, { useState, FC } from "react"
 import styled from 'styled-components'
 import { Link, graphql } from "gatsby"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import PostCell from '../components/PostCell'
 import SideBar from '../components/SideBar'
@@ -53,10 +53,6 @@ const Articles = styled.main`
 `
 const Nav = styled.nav`
   width: 28%;
-  background: ${color.lightBrown};
-  border-radius: 4px;
-  box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
-  margin: 0;
 `
 
 export const query = graphql`
