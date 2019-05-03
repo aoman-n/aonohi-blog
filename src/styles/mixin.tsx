@@ -36,6 +36,9 @@ export const markdownStyle = css`
   > h4 {
     font-size: 1.2em;
   }
+  > h5 {
+    font-size: 1.1em;
+  }
   > p {
     font-size: 0.9em;
   }

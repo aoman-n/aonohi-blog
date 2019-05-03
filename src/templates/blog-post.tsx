@@ -25,7 +25,6 @@ const Post: FC<any> = props => {
         </HeadInner>
       </Header>
       <Main>
-        <SnsBar></SnsBar>
         <Article>
           <MarkDownStyle dangerouslySetInnerHTML={{ __html: html }} />
           <Logly>
@@ -113,33 +112,16 @@ const Text = styled.h1`
   margin: 0;
 `
 const Main = styled.main`
-  padding-top: 24px;
-  padding-bottom: 40px;
   display: grid;
-  grid-template-columns: 80px calc(100% - 250px - 80px) 250px;
-  max-width: 1050px;
-  width: calc(100% - 50px);
+  grid-template-columns: 100px calc(100% - 100px - 300px) 300px;
+  max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
-  /* display: grid;
-  display: -ms-grid;
-  grid-template-columns: 80px calc(100% - 300px - 80px) 300px;
-  max-width: 1000px;
-  width: calc(100% - 50px);
-  margin-right: auto;
-  margin-left: auto; */
-`
-const SnsBar = styled.nav`
-  position: sticky;
-  top: 20vh;
-  will-change: transform;
-  margin-top: -20px;
-  width: 80px;
-  grid-column: 1 / 3;
 `
 const Article = styled.article`
   grid-column: 2 / 3;
-  padding: 16px;
+  grid-row: 1 / 2;
+  padding: 1em;
 `
 const MarkDownStyle = styled.div`
   color: ${color.fontGray};
@@ -147,16 +129,21 @@ const MarkDownStyle = styled.div`
   ${mixin.markdownStyle}
 `
 const NavBar = styled.nav`
+  color: ${color.darkGray};
+  position: sticky;
+  max-height: 100vh;
+  overflow-y: auto;
+  will-change: transform;
   grid-column: 3 / 4;
-  margin: 0;
+  grid-row: 1 / 2;
 `
 const NavBarInner = styled.div`
   position: sticky;
   top: 20px;
   padding: 15px;
-  background: ${color.lightBrown};
-  border-radius: 4px;
-  box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2);
+  /* background: ${color.lightBrown}; */
+  /* border-radius: 4px; */
+  /* box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2); */
 `
 const Logly = styled.ul`
   display: flex;

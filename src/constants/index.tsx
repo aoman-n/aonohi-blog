@@ -16,7 +16,7 @@ export const userInfo: userInfoTypes = {
   nickname: 'aohiro',
   avatarUrl: 'https://s3-ap-northeast-1.amazonaws.com/aohiro-blog/User/avatar/dot.jpg',
   githubUrl: 'https://github.com/laster18',
-  twitterUrl: 'https://twitter.com',
+  twitterUrl: 'https://twitter.com/aohiro01',
 }
 
 export const blogInfo: blogInfo = {

@@ -45,7 +45,7 @@ const Container = styled.div`
 
 `
 const Articles = styled.main`
-  max-width: 620px;
+  max-width: 700px;
   min-width: 400px;
   padding: 20px 0;
   margin: 0 auto;
