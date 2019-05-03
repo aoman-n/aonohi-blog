@@ -42,30 +42,30 @@
 //         />
 //         <Bio />
 
-//         <ul
-//           style={{
-//             display: `flex`,
-//             flexWrap: `wrap`,
-//             justifyContent: `space-between`,
-//             listStyle: `none`,
-//             padding: 0,
-//           }}
-//         >
-//           <li>
-//             {previous && (
-//               <Link to={previous.fields.slug} rel="prev">
-//                 ← {previous.frontmatter.title}
-//               </Link>
-//             )}
-//           </li>
-//           <li>
-//             {next && (
-//               <Link to={next.fields.slug} rel="next">
-//                 {next.frontmatter.title} →
-//               </Link>
-//             )}
-//           </li>
-//         </ul>
+        // <ul
+        //   style={{
+        //     display: `flex`,
+        //     flexWrap: `wrap`,
+        //     justifyContent: `space-between`,
+        //     listStyle: `none`,
+        //     padding: 0,
+        //   }}
+        // >
+        //   <li>
+        //     {previous && (
+        //       <Link to={previous.fields.slug} rel="prev">
+        //         ← {previous.frontmatter.title}
+        //       </Link>
+        //     )}
+        //   </li>
+        //   <li>
+        //     {next && (
+        //       <Link to={next.fields.slug} rel="next">
+        //         {next.frontmatter.title} →
+        //       </Link>
+        //     )}
+        //   </li>
+        // </ul>
 //       </Layout>
 //     )
 //   }
@@ -100,11 +100,10 @@ import { Link, graphql } from 'gatsby'
 import Layout from "../components/layout"
 
 const Post = props => {
-  const { data, location } = props
+  const { data, location, pageContext: { next, previous } } = props
   const { title, author, content, publishedAt, tags } = data.contentfulPost
   const { avatar } = author
   const { html } = content.childMarkdownRemark
-  console.log(content)
   return (
     <Layout location={location} title={title}>
       <h2>{title}</h2>
@@ -123,6 +122,30 @@ const Post = props => {
         {author.name} | {publishedAt}
       </small>
       <div dangerouslySetInnerHTML={{ __html: html }} />
+      <ul
+        style={{
+          display: `flex`,
+          flexWrap: `wrap`,
+          justifyContent: `space-between`,
+          listStyle: `none`,
+          padding: 0,
+        }}
+      >
+        <li>
+          {previous && (
+            <Link to={previous.slug} rel="prev">
+              ← {previous.title}
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={next.slug} rel="next">
+              {next.title} →
+            </Link>
+          )}
+        </li>
+      </ul>
     </Layout>
   )
 }
