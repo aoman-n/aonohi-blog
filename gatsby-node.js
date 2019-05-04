@@ -88,6 +88,9 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
+      if (result.errors) {
+        throw result.errors
+      }
       /* 記事詳細ページの生成 */
       const posts = result.data.allContentfulPost.edges
       posts.forEach((post, index) => {
