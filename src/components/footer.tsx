@@ -8,13 +8,14 @@ import { userInfo, blogInfo } from '../constants'
 import { color, mixin } from '../styles'
 
 interface FooterProps {
-  isRoot: boolean
+  isRoot: boolean,
+  isTag: boolean,
 }
 
-const Footer: FC<FooterProps> = ({ isRoot = true }) => (
+const Footer: FC<FooterProps> = ({ isRoot, isTag }) => (
   <Container>
     <Inner>
-      {!isRoot &&
+      {!isRoot && !isTag &&
         <Links>
           <IconLink
             target="_blank"

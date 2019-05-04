@@ -28,7 +28,7 @@ const Layout: FC<layoutProps> = ({ location, title, children }) => {
       </Helmet>
       <Header {...{ isRoot, isTag, title }} />
       {children}
-      <Footer {...{ isRoot }} />
+      <Footer {...{ isRoot, isTag }} />
     </Container>
   )
 }
