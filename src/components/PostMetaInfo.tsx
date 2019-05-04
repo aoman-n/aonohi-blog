@@ -1,4 +1,7 @@
 import React, { FC } from 'react'
+import { Link } from 'gatsby'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTag } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import { color } from '../styles'
 
@@ -13,7 +16,13 @@ const PostMetaInfo: FC<postMetaInfoProps> = ({ tags, date, color }) => (
     <Date color={color}>{date}</Date>
     <Tags>
       {tags.map(tag => (
-        <Tag>{tag}</Tag>
+        <Tag to={`/tags/${tag.toLowerCase()}`}>
+          <TagText>{tag}</TagText>
+          <FontAwesomeIcon
+            icon={faTag}
+            size="sm"
+          />
+        </Tag>
       ))}</Tags>
   </Container>
 )
@@ -35,7 +44,8 @@ const Tags = styled.div`
   display: flex;
   align-items: center;
 `
-const Tag = styled.span`
+const Tag = styled(Link)`
+  box-shadow: none;
   color: white;
   border: 1px solid white;
   box-sizing: border-box;
@@ -44,9 +54,13 @@ const Tag = styled.span`
   margin-right: 7px;
   cursor: pointer;
   :hover {
+    transition: .2s;
     background: white;
     color: ${color.darkBlue};
   }
+`
+const TagText = styled.span`
+  margin-right: 5px;
 `
 
 export default PostMetaInfo

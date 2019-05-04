@@ -89,8 +89,6 @@ const BlogTitle = styled.h4`
   text-align: left;
 `
 const TopLink = styled(Link)`
-  box-shadow: none;
-  text-decoration: none;
   color: #fee;
   :hover {
     opacity: 0.7;

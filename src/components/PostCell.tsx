@@ -1,45 +1,45 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'gatsby'
 import { color, mixin } from '../styles'
 
-interface postCellProps {
+interface PostCellProps {
   post: any
 }
 
-const PostCell: FC<postCellProps> = ({ post }) => {
+const PostCell: FC<PostCellProps> = ({ post }) => {
   const { title, author, content, tags, slug, publishedAt } = post
   const desc = content.childMarkdownRemark.excerpt.slice(0, 80)
   return (
-    <PostLink to={`/${slug}`}>
-      <TagList>
+    <Container>
+      <div>
         {tags.map(tag => (
-          <Tag>{tag}</Tag>
+          <Tag to={`/tags/${tag.toLowerCase()}`}>
+            <TagText>{tag}</TagText>
+            <FontAwesomeIcon
+              icon={faTag}
+              size="xs"
+            />
+          </Tag>
         ))}
-      </TagList>
-      <Title>{title}</Title>
-      <Description>{desc}</Description>
-      <Day>{publishedAt}</Day>
-    </PostLink>
+      </div>
+      <PostLink to={`/${slug}`}>
+        <Title>{title}</Title>
+        <Description>{desc}</Description>
+        <Day>{publishedAt}</Day>
+      </PostLink>
+    </Container>
   )
 }
 
-const PostLink = styled(Link)`
+const Container = styled.div`
   padding: 20px 0;
-  box-shadow: none;
-  color: ${color.fontGray};
-  display: block;
-  text-decoration: none;
   animation: ${mixin.fadeInDown} .4s both .3s;
   border-bottom: 1px solid #eee;
-  :hover {
-    > h3 {
-      color: ${color.darkBlue};
-    }
-  }
 `
-const TagList = styled.div``
-const Tag = styled.span`
+const Tag = styled(Link)`
   color: white;
   font-size: 0.8em;
   background: ${color.darkGray};
@@ -48,6 +48,25 @@ const Tag = styled.span`
   border-radius: 3px 6px 3px 6px;
   padding: 4px 8px;
   margin-right: 7px;
+  :hover {
+    transition: .2s;
+    color: ${color.darkGray};
+    background: white;
+    border: 1px solid ${color.darkGray};
+  }
+`
+const TagText = styled.span`
+  margin-right: 5px;
+`
+const PostLink = styled(Link)`
+  text-decoration: none;
+  box-shadow: none;
+  color: ${color.fontGray};
+  :hover {
+    > h3 {
+      color: ${color.darkBlue};
+    }
+  }
 `
 const Title = styled.h3`
   font-size: 1.3em;
