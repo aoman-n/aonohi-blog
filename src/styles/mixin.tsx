@@ -23,7 +23,8 @@ export const fadeInDown = keyframes`
 `
 
 export const markdownStyle = css`
-  > h1 {
+  /* font-size: 14px; */
+  /* > h1 {
     font-size: 1.5em;
     margin-top: 15px;
     margin-bottom: 7px;
@@ -47,7 +48,7 @@ export const markdownStyle = css`
   > p {
     font-size: 0.9em;
     margin-bottom: 7px;
-  }
+  } */
 
   .gatsby-highlight-code-line {
     background-color: #feb;
@@ -92,5 +93,105 @@ export const markdownStyle = css`
     font-weight: 600;
     border-radius: 8px 8px 0 0;
     display: table;
+  }
+
+  > ul {
+    margin-left: 0;
+  }
+  > ol {
+    margin-left: 0;
+  }
+
+  > ul > li {
+    margin-left: 0;
+  }
+  > ol > li {
+    margin-left: 0;
+  }
+
+  > ul > li {
+    margin-left: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  > ul > li > p {
+    margin-bottom: 0.3rem;
+  }
+  > li > ul {
+    margin-top: 0rem;
+    margin-left: 0rem;
+  }
+  > ol > li {
+    margin-left: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+  > li > ol {
+    margin-left: 0rem;
+  }
+  > p {
+    font-size: 0.9em;
+    margin-bottom: 7px;
+  }
+
+  // セクションのスタイル
+  > h1 {
+    font-size: 1.5em;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .5rem;
+    border-bottom: 3px solid #ddd;
+    position: relative;
+    > a {
+    box-shadow: none;
+    text-decoration: none;
+  }
+  }
+  > h2 {
+    font-size: 1.4em;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .5rem;
+    border-bottom: 3px solid #ddd;
+    position: relative;
+  }
+  > h2::before {
+    position: absolute;
+    content: " ";
+    width: 100px;
+    bottom: -3px;
+    height: 3px;
+    background-color: #d32828;
+  }
+  > h3 {
+    font-size: 1.3em;
+    margin-top: 2rem;
+    padding-bottom: .3rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  > h3::before {
+    position: absolute;
+    content: " ";
+    width: 100px;
+    bottom: -3px;
+    height: 1px;
+    background-color: #dadada;
+  }
+  > h4 {
+    font-size: 1.2em;
+    margin-top: 1rem;
+    margin-bottom: .8rem;
+    font-size: 1.2rem;
+  }
+  > h5 {
+    font-size: 1.1em;
+    margin-top: 0.8rem;
+    margin-bottom: .5rem;
+    font-size: .8rem;
+  }
+  > h6 {
+    font-size: 1em;
+    margin-top: 0.5rem;
+    margin-bottom: .3rem;
+    font-size: .8rem;
   }
 `
