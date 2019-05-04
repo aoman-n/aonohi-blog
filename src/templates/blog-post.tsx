@@ -10,7 +10,6 @@ const Post: FC<any> = props => {
   const { title, author, content, publishedAt, tags } = data.contentfulPost
   const { avatar, name } = author
   const { html } = content.childMarkdownRemark
-  console.log(html)
   return (
     <Layout location={location} title={title}>
       <Header>

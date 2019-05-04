@@ -13,7 +13,6 @@ const IndexPage: FC<any> = props => {
   const posts = data.allContentfulPost.edges
   const siteTitle = data.site.siteMetadata.title
   const { title, description, author } = data.site.siteMetadata
-  console.log(posts)
   return (
     <Layout title={siteTitle} location={location}>
       <SEO title="All posts" keywords={[`Gatsby`, `Application`, `React`, `Ruby`, `Ruby on Rails`]} />
@@ -21,7 +20,7 @@ const IndexPage: FC<any> = props => {
         <Container>
           <Articles>
             {posts.map(({node}) => (
-              <PostCell post={node} />
+              <PostCell post={node} key={node.id} />
             ))}
           </Articles>
           <Nav>
@@ -42,7 +41,6 @@ const Container = styled.div`
   padding: 20px 0;
   max-width: 900px;
   margin: 0 auto;
-
 `
 const Articles = styled.main`
   max-width: 700px;
@@ -67,6 +65,7 @@ export const query = graphql`
     allContentfulPost {
       edges {
         node {
+          id
           title
           tags
           slug

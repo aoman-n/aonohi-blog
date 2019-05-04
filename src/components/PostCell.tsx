@@ -15,8 +15,8 @@ const PostCell: FC<PostCellProps> = ({ post }) => {
   return (
     <Container>
       <div>
-        {tags.map(tag => (
-          <Tag to={`/tags/${tag.toLowerCase()}`}>
+        {tags.map((tag, index) => (
+          <Tag to={`/tags/${tag.toLowerCase()}`} key={index}>
             <TagText>{tag}</TagText>
             <FontAwesomeIcon
               icon={faTag}

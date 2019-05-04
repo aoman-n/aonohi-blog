@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 import { mixin } from '../styles'
 
@@ -7,6 +7,10 @@ interface headerProps {
   title: string,
   isRoot: boolean,
   isTag: boolean,
+}
+
+interface InnerPorps {
+  fadeIn?: boolean
 }
 
 /*
@@ -19,7 +23,7 @@ const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
   if (isRoot) {
     return (
       <Container>
-        <Inner>
+        <Inner fadeIn={true}>
           <BlogTitleArea>
             <BlogTitle to="/">{title}</BlogTitle>
           </BlogTitleArea>
@@ -30,7 +34,7 @@ const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
   } else if(isTag) {
     return (
       <Container>
-        <Inner>
+        <Inner fadeIn={false}>
           <BlogTitleArea>
             <BlogTitle to="/">{title}</BlogTitle>
           </BlogTitleArea>
@@ -52,9 +56,11 @@ const Container = styled.header`
   background: linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);
   ${mixin.flexColumnCenter}
 `
-const Inner = styled.div`
-  animation: ${mixin.fadeInDown} .4s both .3s;
+const Inner = styled.div<InnerPorps>`
   text-align: center;
+  ${props => props.fadeIn && css`
+    animation: ${mixin.fadeInDown} .4s both .3s;
+  `}
 `
 const BlogTitleArea = styled.div``
 const BlogTitle = styled(Link)`
