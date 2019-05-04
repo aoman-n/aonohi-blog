@@ -116,7 +116,8 @@ exports.createPages = ({ graphql, actions }) => {
           path: `/tags/${tag.toLowerCase()}/`,
           component: tagPage,
           context: {
-            tag
+            tag,
+            allTags: tags
           },
         })
       })

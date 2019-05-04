@@ -1,14 +1,16 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { Link, graphql } from 'gatsby'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTag } from '@fortawesome/free-solid-svg-icons'
+
 import Layout from "../components/Layout"
 import SideBar from '../components/SideBar'
 import PostCell from '../components/PostCell'
-import PostMetaInfo from '../components/PostMetaInfo'
-import { mixin, color } from '../styles'
+import { color } from '../styles'
 
-const Tag: FC<any> = props => {
-  const { tag } = props.pageContext
+const TagPage: FC<any> = props => {
+  const { tag, allTags } = props.pageContext
   const { location } = props
   const { title } = props.data.site.siteMetadata
   const posts = props.data.allContentfulPost.edges
@@ -18,11 +20,25 @@ const Tag: FC<any> = props => {
       <Container>
         <Articles>
           <SectionTitle>
-            <div><TagName>{tag} </TagName>に関する記事 <Count>{postCount}</Count> 件</div>
+            <StrongText withUnderLine={true}>{tag} </StrongText>に関する記事 <StrongText>{postCount}</StrongText> 件
           </SectionTitle>
           {posts.map(({node}) => (
             <PostCell key={node.id} post={node} />
           ))}
+          <AllTagList>
+            <SectionTitle>タグ一覧</SectionTitle>
+            <TagListFrame>
+              {allTags.map((tag, index) => (
+                <Tag to={`/tags/${tag.toLowerCase()}`} key={index}>
+                  <TagText>{tag}</TagText>
+                  <FontAwesomeIcon
+                    icon={faTag}
+                    size="xs"
+                  />
+                </Tag>
+              ))}
+            </TagListFrame>
+          </AllTagList>
         </Articles>
         <Nav>
           <SideBar />
@@ -30,6 +46,10 @@ const Tag: FC<any> = props => {
       </Container>
     </Layout>
   )
+}
+
+interface StrongTextProps {
+  withUnderLine?: boolean,
 }
 
 const Container = styled.div`
@@ -50,17 +70,42 @@ const SectionTitle = styled.div`
   color: #808080;
   padding: 20px 0;
 `
-const strongStyle = css`
+const StrongText = styled.span<StrongTextProps>`
   color: ${color.fontGray};
   font-size: 1.3em;
   font-weight: bold;
+  text-decoration: ${props => props.withUnderLine ? `underline` : `none`};
 `
-const TagName = styled.span`
-  text-decoration: underline;
-  ${strongStyle}
+const AllTagList = styled.section`
+  padding: 20px 0;
 `
-const Count = styled.span`
-  ${strongStyle}
+const TagListFrame = styled.div`
+  border: 2px solid #eee;
+  border-radius: 4px;
+  min-height: 85px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+`
+const Tag = styled(Link)`
+  color: white;
+  font-size: 0.8em;
+  background: ${color.darkGray};
+  border: 1px solid white;
+  box-sizing: border-box;
+  border-radius: 3px 6px 3px 6px;
+  padding: 4px 8px;
+  margin-right: 7px;
+  :hover {
+    transition: .2s;
+    color: ${color.darkGray};
+    background: white;
+    border: 1px solid ${color.darkGray};
+  }
+`
+const TagText = styled.span`
+  margin-right: 5px;
 `
 const Nav = styled.nav`
   width: 28%;
@@ -96,4 +141,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default Tag
+export default TagPage

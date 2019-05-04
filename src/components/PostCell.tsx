@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'gatsby'
+
 import { color, mixin } from '../styles'
 
 interface PostCellProps {
