@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import { mixin } from '../styles';
 
-interface headerProps {
+interface HeaderProps {
   title: string;
   isRoot: boolean;
   isTag: boolean;
@@ -19,7 +19,7 @@ TODO:
   案:qiitaのトップヘッダー背景風、コードのタグを薄文字で散りばめる
 */
 
-const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
+const Header: FC<HeaderProps> = ({ title, isRoot, isTag }) => {
   if (isRoot) {
     return (
       <Container>

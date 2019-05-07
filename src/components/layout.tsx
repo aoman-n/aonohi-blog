@@ -7,12 +7,12 @@ import Footer from './Footer';
 
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
-interface layoutProps {
+interface LayoutProps {
   title: string;
   location: any;
 }
 
-const Layout: FC<layoutProps> = ({ location, title, children }) => {
+const Layout: FC<LayoutProps> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const tagPath = `${__PATH_PREFIX__}/tags`;
   const isRoot = location.pathname === rootPath;

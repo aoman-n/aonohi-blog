@@ -5,13 +5,13 @@ import { faTag } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { color } from '../styles';
 
-interface postMetaInfoProps {
+interface PostMetaInfoProps {
   color?: string;
   tags: string[];
   date: string;
 }
 
-const PostMetaInfo: FC<postMetaInfoProps> = ({ tags, date, color }) => (
+const PostMetaInfo: FC<PostMetaInfoProps> = ({ tags, date, color }) => (
   <Container>
     <Date color={color}>{date}</Date>
     <Tags>

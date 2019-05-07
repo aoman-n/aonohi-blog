@@ -1,4 +1,4 @@
-interface userInfoTypes {
+interface UserInfoTypes {
   name: string;
   nickname: string;
   avatarUrl: string;
@@ -6,12 +6,12 @@ interface userInfoTypes {
   twitterUrl: string;
 }
 
-interface blogInfo {
+interface BlogInfo {
   url: string;
   title: string;
 }
 
-export const userInfo: userInfoTypes = {
+export const userInfo: UserInfoTypes = {
   name: 'Hiroaki Aoba',
   nickname: 'aohiro',
   avatarUrl:
@@ -20,7 +20,7 @@ export const userInfo: userInfoTypes = {
   twitterUrl: 'https://twitter.com/aohiro01',
 };
 
-export const blogInfo: blogInfo = {
+export const blogInfo: BlogInfo = {
   title: 'Aonohi Blog',
   url: 'http://localhost:8000/',
 };
