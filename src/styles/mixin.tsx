@@ -1,12 +1,12 @@
-import { css, keyframes } from 'styled-components'
-import color from './color'
+import { css, keyframes } from 'styled-components';
+import color from './color';
 
 export const flexColumnCenter = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const fadeInDown = keyframes`
   0% {
@@ -20,7 +20,7 @@ export const fadeInDown = keyframes`
     transform: translateY(0);
     -webkit-transform: translateY(0);
   }
-`
+`;
 
 export const markdownStyle = css`
   /* font-size: 14px; */
@@ -69,7 +69,7 @@ export const markdownStyle = css`
     overflow: auto;
   }
 
-  .gatsby-highlight pre[class*="language-"] {
+  .gatsby-highlight pre[class*='language-'] {
     background-color: transparent;
     margin: 0;
     padding: 0;
@@ -78,7 +78,7 @@ export const markdownStyle = css`
     min-width: 100%; /* 2 */
   }
 
-  .gatsby-highlight pre[class*="language-"].line-numbers {
+  .gatsby-highlight pre[class*='language-'].line-numbers {
     padding-left: 2.8em; /* 3 */
   }
 
@@ -89,7 +89,8 @@ export const markdownStyle = css`
     padding: 0.7rem 1.05rem;
     font-size: 0.8em;
     line-height: 0.2;
-    font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+      Courier New, monospace;
     font-weight: 600;
     border-radius: 8px 8px 0 0;
     display: table;
@@ -137,25 +138,25 @@ export const markdownStyle = css`
     font-size: 1.5em;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
     border-bottom: 3px solid #ddd;
     position: relative;
     > a {
-    box-shadow: none;
-    text-decoration: none;
-  }
+      box-shadow: none;
+      text-decoration: none;
+    }
   }
   > h2 {
     font-size: 1.4em;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
     border-bottom: 3px solid #ddd;
     position: relative;
   }
   > h2::before {
     position: absolute;
-    content: " ";
+    content: ' ';
     width: 100px;
     bottom: -3px;
     height: 3px;
@@ -164,13 +165,13 @@ export const markdownStyle = css`
   > h3 {
     font-size: 1.3em;
     margin-top: 2rem;
-    padding-bottom: .3rem;
+    padding-bottom: 0.3rem;
     margin-bottom: 1rem;
     position: relative;
   }
   > h3::before {
     position: absolute;
-    content: " ";
+    content: ' ';
     width: 100px;
     bottom: -3px;
     height: 1px;
@@ -179,19 +180,19 @@ export const markdownStyle = css`
   > h4 {
     font-size: 1.2em;
     margin-top: 1rem;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
     font-size: 1.2rem;
   }
   > h5 {
     font-size: 1.1em;
     margin-top: 0.8rem;
-    margin-bottom: .5rem;
-    font-size: .8rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
   }
   > h6 {
     font-size: 1em;
     margin-top: 0.5rem;
-    margin-bottom: .3rem;
-    font-size: .8rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.8rem;
   }
-`
+`;

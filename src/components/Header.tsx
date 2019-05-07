@@ -1,16 +1,16 @@
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
-import { Link } from 'gatsby'
-import { mixin } from '../styles'
+import React, { FC } from 'react';
+import styled, { css } from 'styled-components';
+import { Link } from 'gatsby';
+import { mixin } from '../styles';
 
 interface headerProps {
-  title: string,
-  isRoot: boolean,
-  isTag: boolean,
+  title: string;
+  isRoot: boolean;
+  isTag: boolean;
 }
 
 interface InnerPorps {
-  fadeIn?: boolean
+  fadeIn?: boolean;
 }
 
 /*
@@ -30,8 +30,8 @@ const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
           <Description>Web developer blog.</Description>
         </Inner>
       </Container>
-    )
-  } else if(isTag) {
+    );
+  } else if (isTag) {
     return (
       <Container>
         <Inner fadeIn={false}>
@@ -41,28 +41,30 @@ const Header: FC<headerProps> = ({ title, isRoot, isTag }) => {
           <Description>Tag page.</Description>
         </Inner>
       </Container>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
 const Container = styled.header`
   color: white;
   height: 40vh;
   width: 100vw;
-  background: #2980B9;
-  background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
-  background: linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);
+  background: #2980b9;
+  background: -webkit-linear-gradient(to right, #ffffff, #6dd5fa, #2980b9);
+  background: linear-gradient(to left, #ffffff, #6dd5fa, #2980b9);
   ${mixin.flexColumnCenter}
-`
+`;
 const Inner = styled.div<InnerPorps>`
   text-align: center;
-  ${props => props.fadeIn && css`
-    animation: ${mixin.fadeInDown} .4s both .3s;
-  `}
-`
-const BlogTitleArea = styled.div``
+  ${props =>
+    props.fadeIn &&
+    css`
+      animation: ${mixin.fadeInDown} 0.4s both 0.3s;
+    `}
+`;
+const BlogTitleArea = styled.div``;
 const BlogTitle = styled(Link)`
   color: white;
   font-size: 2.4rem;
@@ -71,9 +73,9 @@ const BlogTitle = styled(Link)`
   :hover {
     opacity: 0.8;
   }
-`
+`;
 const Description = styled.small`
   font-size: 0.9rem;
-`
+`;
 
-export default Header
+export default Header;

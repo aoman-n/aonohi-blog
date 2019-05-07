@@ -1,21 +1,21 @@
-import React, { FC } from "react"
-import styled from 'styled-components'
-import Helmet from 'react-helmet'
+import React, { FC } from 'react';
+import styled from 'styled-components';
+import Helmet from 'react-helmet';
 
-import Header from './Header'
-import Footer from './Footer'
+import Header from './Header';
+import Footer from './Footer';
 
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 interface layoutProps {
-  title: string,
-  location: any,
+  title: string;
+  location: any;
 }
 
 const Layout: FC<layoutProps> = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const tagPath = `${__PATH_PREFIX__}/tags`
-  const isRoot = location.pathname === rootPath
+  const rootPath = `${__PATH_PREFIX__}/`;
+  const tagPath = `${__PATH_PREFIX__}/tags`;
+  const isRoot = location.pathname === rootPath;
   const isTag = location.pathname.startsWith(tagPath);
   return (
     <Container>
@@ -30,18 +30,18 @@ const Layout: FC<layoutProps> = ({ location, title, children }) => {
       {children}
       <Footer {...{ isRoot, isTag }} />
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
-  font-family: -apple-system-body, BlinkMacSystemFont, "Helvetica Neue",
-    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans Japanese",
-    "游ゴシック  Medium", "Yu Gothic Medium", "メイリオ", meiryo, sans-serif;
+  font-family: -apple-system-body, BlinkMacSystemFont, 'Helvetica Neue',
+    'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans Japanese',
+    '游ゴシック  Medium', 'Yu Gothic Medium', 'メイリオ', meiryo, sans-serif;
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     screen and (min-resolution: 2dppx) {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
-`
+`;
 
-export default Layout
+export default Layout;
