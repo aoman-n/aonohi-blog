@@ -1,22 +1,22 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
-import Helmet from 'react-helmet';
+import React, { FC } from 'react'
+import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
-import Header from './Header';
-import Footer from './Footer';
+import Footer from './Footer'
+import Header from './Header'
 
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 interface LayoutProps {
-  title: string;
-  location: any;
+  title: string
+  location: any
 }
 
 const Layout: FC<LayoutProps> = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  const tagPath = `${__PATH_PREFIX__}/tags`;
-  const isRoot = location.pathname === rootPath;
-  const isTag = location.pathname.startsWith(tagPath);
+  const rootPath = `${__PATH_PREFIX__}/`
+  const tagPath = `${__PATH_PREFIX__}/tags`
+  const isRoot = location.pathname === rootPath
+  const isTag = location.pathname.startsWith(tagPath)
   return (
     <Container>
       <Helmet>
@@ -30,8 +30,8 @@ const Layout: FC<LayoutProps> = ({ location, title, children }) => {
       {children}
       <Footer {...{ isRoot, isTag }} />
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   font-family: -apple-system-body, BlinkMacSystemFont, 'Helvetica Neue',
@@ -42,6 +42,6 @@ const Container = styled.div`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
-`;
+`
 
-export default Layout;
+export default Layout
