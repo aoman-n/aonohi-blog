@@ -1,12 +1,12 @@
-import { css, keyframes } from 'styled-components';
-import color from './color';
+import { css, keyframes } from 'styled-components'
+import color from './color'
 
 export const flexColumnCenter = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const fadeInDown = keyframes`
   0% {
@@ -20,7 +20,7 @@ export const fadeInDown = keyframes`
     transform: translateY(0);
     -webkit-transform: translateY(0);
   }
-`;
+`
 
 export const markdownStyle = css`
   /* font-size: 14px; */
@@ -195,4 +195,4 @@ export const markdownStyle = css`
     margin-bottom: 0.3rem;
     font-size: 0.8rem;
   }
-`;
+`

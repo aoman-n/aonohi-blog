@@ -1,20 +1,20 @@
-import React, { FC } from 'react';
-import styled, { css } from 'styled-components';
-import { Link, graphql } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTag } from '@fortawesome/free-solid-svg-icons';
+import { faTag } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { graphql, Link } from 'gatsby'
+import React, { FC } from 'react'
+import styled, { css } from 'styled-components'
 
-import Layout from '../components/Layout';
-import SideBar from '../components/SideBar';
-import PostCell from '../components/PostCell';
-import { color } from '../styles';
+import Layout from '../components/Layout'
+import PostCell from '../components/PostCell'
+import SideBar from '../components/SideBar'
+import { color } from '../styles'
 
 const TagPage: FC<any> = props => {
-  const { tag, allTags } = props.pageContext;
-  const { location } = props;
-  const { title } = props.data.site.siteMetadata;
-  const posts = props.data.allContentfulPost.edges;
-  const postCount = posts.length;
+  const { tag, allTags } = props.pageContext
+  const { location } = props
+  const { title } = props.data.site.siteMetadata
+  const posts = props.data.allContentfulPost.edges
+  const postCount = posts.length
   return (
     <Layout location={location} title={title}>
       <Container>
@@ -43,11 +43,11 @@ const TagPage: FC<any> = props => {
         </Nav>
       </Container>
     </Layout>
-  );
-};
+  )
+}
 
 interface StrongTextProps {
-  withUnderLine?: boolean;
+  withUnderLine?: boolean
 }
 
 const Container = styled.div`
@@ -56,27 +56,27 @@ const Container = styled.div`
   padding: 20px 0;
   max-width: 900px;
   margin: 0 auto;
-`;
+`
 const Articles = styled.main`
   max-width: 700px;
   min-width: 400px;
   padding: 20px 0;
   margin: 0 auto;
   padding: 0 20px;
-`;
+`
 const SectionTitle = styled.div`
   color: #808080;
   padding: 20px 0;
-`;
+`
 const StrongText = styled.span<StrongTextProps>`
   color: ${color.fontGray};
   font-size: 1.3em;
   font-weight: bold;
   text-decoration: ${props => (props.withUnderLine ? `underline` : `none`)};
-`;
+`
 const AllTagList = styled.section`
   padding: 20px 0;
-`;
+`
 const TagListFrame = styled.div`
   border: 2px solid #eee;
   border-radius: 4px;
@@ -85,7 +85,7 @@ const TagListFrame = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-`;
+`
 const Tag = styled(Link)`
   color: white;
   font-size: 0.8em;
@@ -101,13 +101,13 @@ const Tag = styled(Link)`
     background: white;
     border: 1px solid ${color.darkGray};
   }
-`;
+`
 const TagText = styled.span`
   margin-right: 5px;
-`;
+`
 const Nav = styled.nav`
   width: 28%;
-`;
+`
 
 export const pageQuery = graphql`
   query($tag: String) {
@@ -134,6 +134,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
 
-export default TagPage;
+export default TagPage

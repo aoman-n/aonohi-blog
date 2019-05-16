@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
-import { Link } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTag } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
-import { color } from '../styles';
+import { faTag } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'gatsby'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { color } from '../styles'
 
 interface PostMetaInfoProps {
-  color?: string;
-  tags: string[];
-  date: string;
+  color?: string
+  tags: string[]
+  date: string
 }
 
 const PostMetaInfo: FC<PostMetaInfoProps> = ({ tags, date, color }) => (
@@ -23,7 +23,7 @@ const PostMetaInfo: FC<PostMetaInfoProps> = ({ tags, date, color }) => (
       ))}
     </Tags>
   </Container>
-);
+)
 
 const Container = styled.small`
   font-size: 0.7em;
@@ -32,16 +32,16 @@ const Container = styled.small`
   display: flex;
   align-items: center;
   margin: -0.5em 0 1em;
-`;
+`
 const Date = styled.div`
   margin-right: 2em;
   font-size: 1.1em;
   ${props => (props.color ? `color: ${props.color}` : null)}
-`;
+`
 const Tags = styled.div`
   display: flex;
   align-items: center;
-`;
+`
 const Tag = styled(Link)`
   box-shadow: none;
   color: white;
@@ -56,9 +56,9 @@ const Tag = styled(Link)`
     background: white;
     color: ${color.darkBlue};
   }
-`;
+`
 const TagText = styled.span`
   margin-right: 5px;
-`;
+`
 
-export default PostMetaInfo;
+export default PostMetaInfo

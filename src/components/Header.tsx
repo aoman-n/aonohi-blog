@@ -1,16 +1,16 @@
-import React, { FC } from 'react';
-import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
-import { mixin } from '../styles';
+import { Link } from 'gatsby'
+import React, { FC } from 'react'
+import styled, { css } from 'styled-components'
+import { mixin } from '../styles'
 
 interface HeaderProps {
-  title: string;
-  isRoot: boolean;
-  isTag: boolean;
+  title: string
+  isRoot: boolean
+  isTag: boolean
 }
 
 interface InnerPorps {
-  fadeIn?: boolean;
+  fadeIn?: boolean
 }
 
 /*
@@ -30,7 +30,7 @@ const Header: FC<HeaderProps> = ({ title, isRoot, isTag }) => {
           <Description>Web developer blog.</Description>
         </Inner>
       </Container>
-    );
+    )
   } else if (isTag) {
     return (
       <Container>
@@ -41,11 +41,11 @@ const Header: FC<HeaderProps> = ({ title, isRoot, isTag }) => {
           <Description>Tag page.</Description>
         </Inner>
       </Container>
-    );
+    )
   } else {
-    return null;
+    return null
   }
-};
+}
 
 const Container = styled.header`
   color: white;
@@ -55,7 +55,7 @@ const Container = styled.header`
   background: -webkit-linear-gradient(to right, #ffffff, #6dd5fa, #2980b9);
   background: linear-gradient(to left, #ffffff, #6dd5fa, #2980b9);
   ${mixin.flexColumnCenter}
-`;
+`
 const Inner = styled.div<InnerPorps>`
   text-align: center;
   ${props =>
@@ -63,8 +63,8 @@ const Inner = styled.div<InnerPorps>`
     css`
       animation: ${mixin.fadeInDown} 0.4s both 0.3s;
     `}
-`;
-const BlogTitleArea = styled.div``;
+`
+const BlogTitleArea = styled.div``
 const BlogTitle = styled(Link)`
   color: white;
   font-size: 2.4rem;
@@ -73,9 +73,9 @@ const BlogTitle = styled(Link)`
   :hover {
     opacity: 0.8;
   }
-`;
+`
 const Description = styled.small`
   font-size: 0.9rem;
-`;
+`
 
-export default Header;
+export default Header

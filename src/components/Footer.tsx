@@ -1,47 +1,36 @@
-import React, { FC } from 'react'
+import {
+  faGithubSquare,
+  faTwitterSquare,
+} from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 
-import { userInfo, blogInfo } from '../constants'
+import { blogInfo, userInfo } from '../constants'
 import { color, mixin } from '../styles'
 
 interface FooterProps {
-  isRoot: boolean,
-  isTag: boolean,
+  isRoot: boolean
+  isTag: boolean
 }
 
 const Footer: FC<FooterProps> = ({ isRoot, isTag }) => (
   <Container>
     <Inner>
-      {!isRoot && !isTag &&
+      {!isRoot && !isTag && (
         <Links>
-          <IconLink
-            target="_blank"
-            rel="noopener"
-            href={userInfo.githubUrl}
-          >
-            <FontAwesomeIcon
-              icon={faGithubSquare}
-              size="lg"
-              color="#8f8f8f"
-            />
+          <IconLink target="_blank" rel="noopener" href={userInfo.githubUrl}>
+            <FontAwesomeIcon icon={faGithubSquare} size="lg" color="#8f8f8f" />
           </IconLink>
-          <IconLink
-            target="_blank"
-            rel="noopener"
-            href={userInfo.twitterUrl}
-          >
-            <FontAwesomeIcon
-              icon={faTwitterSquare}
-              size="lg"
-              color="#8f8f8f"
-            />
+          <IconLink target="_blank" rel="noopener" href={userInfo.twitterUrl}>
+            <FontAwesomeIcon icon={faTwitterSquare} size="lg" color="#8f8f8f" />
           </IconLink>
         </Links>
-      }
-      <BlogTitle><StyledLink to="/">{blogInfo.title}</StyledLink></BlogTitle>
+      )}
+      <BlogTitle>
+        <StyledLink to="/">{blogInfo.title}</StyledLink>
+      </BlogTitle>
       <CopyRight>Copyright © 2019. {userInfo.nickname}</CopyRight>
     </Inner>
   </Container>
@@ -82,7 +71,6 @@ const StyledLink = styled(Link)`
     opacity: 0.7;
   }
 `
-const CopyRight = styled.small`
-`
+const CopyRight = styled.small``
 
 export default Footer

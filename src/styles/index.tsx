@@ -1,4 +1,4 @@
-import color from './color';
-import * as mixin from './mixin';
+import color from './color'
+import * as mixin from './mixin'
 
-export { mixin, color };
+export { mixin, color }
