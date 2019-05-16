@@ -1,22 +1,22 @@
-import React, { FC } from "react"
-import styled from 'styled-components'
+import React, { FC } from 'react'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
-import Header from './Header'
 import Footer from './Footer'
+import Header from './Header'
 
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
-interface layoutProps {
-  title: string,
-  location: any,
+interface LayoutProps {
+  title: string
+  location: any
 }
 
-const Layout: FC<layoutProps> = ({ location, title, children }) => {
+const Layout: FC<LayoutProps> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const tagPath = `${__PATH_PREFIX__}/tags`
   const isRoot = location.pathname === rootPath
-  const isTag = location.pathname.startsWith(tagPath);
+  const isTag = location.pathname.startsWith(tagPath)
   return (
     <Container>
       <Helmet>
@@ -34,9 +34,9 @@ const Layout: FC<layoutProps> = ({ location, title, children }) => {
 }
 
 const Container = styled.div`
-  font-family: -apple-system-body, BlinkMacSystemFont, "Helvetica Neue",
-    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans Japanese",
-    "游ゴシック  Medium", "Yu Gothic Medium", "メイリオ", meiryo, sans-serif;
+  font-family: -apple-system-body, BlinkMacSystemFont, 'Helvetica Neue',
+    'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans Japanese',
+    '游ゴシック  Medium', 'Yu Gothic Medium', 'メイリオ', meiryo, sans-serif;
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     screen and (min-resolution: 2dppx) {
     -moz-osx-font-smoothing: grayscale;
