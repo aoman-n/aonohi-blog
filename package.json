@@ -35,18 +35,22 @@
     "gatsby-source-filesystem": "^2.0.32",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.18",
+    "github-slugger": "^1.2.1",
     "lodash": "^4.17.11",
+    "mdast-util-to-string": "^1.0.5",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.19",
+    "remark": "^10.0.1",
     "styled-components": "^4.2.0",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.54",
     "typescript": "^3.4.5",
     "typography": "^0.16.19",
-    "typography-theme-wordpress-2016": "^0.16.19"
+    "typography-theme-wordpress-2016": "^0.16.19",
+    "unist-util-visit": "^1.4.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.129",
