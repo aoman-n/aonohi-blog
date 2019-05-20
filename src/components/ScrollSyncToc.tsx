@@ -1,7 +1,8 @@
 import { throttle } from 'lodash'
 import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components'
-// import console = require('console');
+
+import Toc from './Toc'
 
 const getElementTopOffsetsById = headings => {
   return headings
@@ -55,11 +56,14 @@ const ScrollSyncToc: FC<{ heading: any }> = ({ heading }) => {
   }, [])
 
   return (
-    <>
-      <p>もくじ</p>
-      <p>{activeItemIds}</p>
-    </>
+    <Container>
+      <Toc activeItemIds={activeItemIds} heading={heading} />
+    </Container>
   )
 }
+
+const Container = styled.div`
+  font-size: 14px;
+`
 
 export default ScrollSyncToc

@@ -51,9 +51,9 @@ const Post: FC<any> = props => {
           </Logly>
         </Article>
         <NavBar>
-          <NavBarInner>
+          {/* <NavBarInner> */}
             <ScrollSyncToc heading={heading} />
-          </NavBarInner>
+          {/* </NavBarInner> */}
         </NavBar>
       </Main>
     </Layout>
@@ -131,22 +131,32 @@ const MarkDownStyle = styled.div`
   ${mixin.markdownStyle}
 `
 const NavBar = styled.nav`
-  color: ${color.darkGray};
+  /* color: ${color.darkGray};
   position: sticky;
   max-height: 100vh;
   overflow-y: auto;
   will-change: transform;
   grid-column: 3 / 4;
-  grid-row: 1 / 2;
-`
-const NavBarInner = styled.div`
+  grid-row: 1 / 2; */
   position: sticky;
-  top: 20px;
-  padding: 15px;
-  /* background: ${color.lightBrown}; */
-  /* border-radius: 4px; */
-  /* box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2); */
+  position: -webkit-sticky;
+  max-height: 100vh;
+  overflow-y: auto;
+  will-change: transform;
+  top: 12px;
+  padding: 12px;
+  margin-top: 64px;
+  grid-column: 3/4;
+  grid-row: 1/2;
 `
+// const NavBarInner = styled.div`
+//   position: sticky;
+//   top: 20px;
+//   padding: 15px;
+//   /* background: ${color.lightBrown}; */
+//   /* border-radius: 4px; */
+//   /* box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2); */
+// `
 const Logly = styled.ul`
   display: flex;
   flex-wrap: wrap;
