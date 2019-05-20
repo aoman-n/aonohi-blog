@@ -3,13 +3,14 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import PostMetaInfo from '../components/PostMetaInfo'
+import ScrollSyncToc from '../components/ScrollSyncToc'
 import { color, mixin } from '../styles'
 
 const Post: FC<any> = props => {
   const {
     data,
     location,
-    pageContext: { next, previous },
+    pageContext: { next, previous, heading, _html },
   } = props
   const { title, author, content, publishedAt, tags } = data.contentfulPost
   const { avatar, name } = author
@@ -51,12 +52,7 @@ const Post: FC<any> = props => {
         </Article>
         <NavBar>
           <NavBarInner>
-            nav bar
-            <br />
-            test
-            <br />
-            ok
-            <br />
+            <ScrollSyncToc heading={heading} />
           </NavBarInner>
         </NavBar>
       </Main>

@@ -141,10 +141,6 @@ export const markdownStyle = css`
     padding-bottom: 0.5rem;
     border-bottom: 3px solid #ddd;
     position: relative;
-    > a {
-      box-shadow: none;
-      text-decoration: none;
-    }
   }
   > h2 {
     font-size: 1.4em;
@@ -194,5 +190,11 @@ export const markdownStyle = css`
     margin-top: 0.5rem;
     margin-bottom: 0.3rem;
     font-size: 0.8rem;
+  }
+  > h1, h2, h3, h4, h5, h6 {
+    > a {
+      box-shadow: none;
+      text-decoration: none;
+    }
   }
 `
