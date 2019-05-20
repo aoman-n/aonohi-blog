@@ -12,7 +12,6 @@ interface Item {
 }
 
 const Toc: FC<any> = ({ activeItemIds, heading }) => {
-  console.log(activeItemIds.includes(heading[0].id))
   return (
     <Location>
       {({ navigate, location }) =>
