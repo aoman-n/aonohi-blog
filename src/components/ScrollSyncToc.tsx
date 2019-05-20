@@ -1,6 +1,7 @@
 import { throttle } from 'lodash'
 import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components'
+// import console = require('console');
 
 const getElementTopOffsetsById = headings => {
   return headings
@@ -21,38 +22,30 @@ const OFFSET_ACTIVE_IMTE = 64
 
 const ScrollSyncToc: FC<{ heading: any }> = ({ heading }) => {
   const [activeItemIds, SetActiveItemIds] = useState<any>([])
-  const [itemTopOffsets, SetItemTopOffsets] = useState<any>([])
 
-  const scrollEvent = () => {
-    console.log('scroll!!!', itemTopOffsets)
-    // const item = itemTopOffsets.find((current, i) => {
-    //   const next = itemTopOffsets[i + 1]
+  const scrollEvent = (itemTopOffsets: any) => {
+    const item = itemTopOffsets.find((current, i) => {
+      const next = itemTopOffsets[i + 1]
 
-    //   return next
-    //     ? window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop &&
-    //         window.scrollY + OFFSET_ACTIVE_IMTE < next.offsetTop
-    //     : window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop
-    // })
+      return next
+        ? window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop &&
+            window.scrollY + OFFSET_ACTIVE_IMTE < next.offsetTop
+        : window.scrollY + OFFSET_ACTIVE_IMTE >= current.offsetTop
+    })
 
-    // const newActiveItemIds = item
-    //   ? item.parents
-    //     ? [item.id, ...item.parents.map(i => i.id)]
-    //     : [item.id]
-    //   : []
+    const newActiveItemIds = item
+      ? item.parents
+        ? [item.id, ...item.parents.map(i => i.id)]
+        : [item.id]
+      : []
 
-    // SetActiveItemIds(newActiveItemIds)
+    SetActiveItemIds(newActiveItemIds)
   }
 
-  // const handleScroll = () => throttle(() => { scrollEvent() }, 100)
-  // const handleScroll = () => throttle(() => scrollEvent(), 100)
-  // const handleScroll = () => throttle(() => scrollEvent(), 100)
-  // const handleScroll = () => console.log('scroll')
-  const handleScroll = throttle(scrollEvent, 100)
+  const handleScroll = throttle(() => scrollEvent(getElementTopOffsetsById(heading)), 100)
 
   useEffect(() => {
     console.log('mount!')
-    SetItemTopOffsets(getElementTopOffsetsById(heading))
-    // const itemTopOffsets = getElementTopOffsetsById(heading)
     window.addEventListener(`scroll`, handleScroll)
 
     return () => {
