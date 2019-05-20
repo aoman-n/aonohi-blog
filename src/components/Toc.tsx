@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 
-interface Item {
+export interface OffsetItem {
   id: string
   offsetTop: number
   parents: any
@@ -17,14 +17,14 @@ const Toc: FC<any> = ({ activeItemIds, heading }) => {
       {({ navigate, location }) =>
         <List>
           {
-            heading.map((item: Item) =>
+            heading.map((item: OffsetItem) => (
               <ListItem key={item.id} style={{marginLeft: `${(item.depth - 2) * 12}px`}}>
                 <StyledLink
                   to={`${location.pathname}#${item.id}`}
                 ><LinkItem isActive={activeItemIds.includes(item.id)}>{item.value}</LinkItem>
                 </StyledLink>
               </ListItem>
-            )
+            ))
           }
         </List>
       }
