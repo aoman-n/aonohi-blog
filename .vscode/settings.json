@@ -1,6 +1,7 @@
 {
-  "tslint.configFile": "tslint.json",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
-  }
+  // "editor.formatOnSave": true,
+  "[handlebars]": {
+      "editor.formatOnSave": false
+  },
+  "tslint.autoFixOnSave": true
 }
