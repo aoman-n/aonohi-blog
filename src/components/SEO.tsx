@@ -1,112 +1,85 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
+// import { graphql, useStaticQuery } from 'gatsby'
 import React, { FC } from 'react'
 import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+
+import * as config from '../constants/index'
 
 interface SeoProps {
+  isRoot: boolean
+  title?: string
   description?: string
-  lang?: string
-  meta?: object[]
-  keywords?: string[]
-  title: string
+  postUrl?: string
+  postDate?: string
+  largeImage?: string
 }
 
-// SEO.defaultProps = {
-//   lang: `en`,
-//   meta: [],
-//   keywords: [],
-//   description: ``,
-// }
-
-// SEO.propTypes = {
-//   description: PropTypes.string,
-//   lang: PropTypes.string,
-//   meta: PropTypes.arrayOf(PropTypes.object),
-//   keywords: PropTypes.arrayOf(PropTypes.string),
-//   title: PropTypes.string.isRequired,
-// }
-
-
 const SEO: FC<SeoProps> = ({
-  description = ``,
-  lang = `ja`,
-  meta = [],
-  keywords = [],
+  isRoot,
   title,
+  description,
+  postUrl,
+  postDate,
+  largeImage,
 }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `,
-  )
+  const type = isRoot ? 'website' : 'article'
 
-  const metaDescription = description || site.siteMetadata.description
+  // const { site } = useStaticQuery(
+  //   graphql`
+  //     query {
+  //       site {
+  //         siteMetadata {
+  //           title
+  //           description
+  //           author
+  //         }
+  //       }
+  //     }
+  //   `,
+  // )
+
+
+  /* 画像を作成したら有効にする */
+  // const image =
+  //   largeImage
+  //     ? largeImage
+  //     : config.blogImageUrl;
+  // const twitterCard =
+  //   largeImage
+  //     ? 'summary_large_image'
+  //     : 'summary';
+
+  const image = config.userInfo.avatarUrl
+  const twitterCard = config.userInfo.avatarUrl
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
-        .concat(meta)}
-    />
+    <Helmet>
+      {/* General tags */}
+      <meta name="description" content={description || config.blogInfo.description} />
+      <meta name="image" content={image} />
+
+      {/* Schema.org tags */}
+      {/* {JSONLDTag} */}
+
+      {/* OpenGraph tags */}
+      <meta property="og:title" content={title || config.blogInfo.title} />
+      <meta property="og:description" content={description || config.blogInfo.description} />
+      <meta property="og:url" content={config.blogInfo.url} />
+      <meta property="og:type" content={type} />
+      <meta property="og:site_name" content={config.blogInfo.title} />
+      <meta property="og:image" content={image} />
+
+      {/* OpenGraph tags for facebook */}
+      {/* <meta property="fb:app_id" content={config.facebookAppId} /> */}
+
+      {/* Twitter Card tags */}
+      <meta name="twitter:card" content={twitterCard} />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:title" content={title || config.blogInfo.title} />
+      <meta name="twitter:description" content={description || config.blogInfo.description} />
+      <meta name="twitter:site" content={`@${config.userInfo.twitterName}`} />
+
+      <link rel="canonical" href={postUrl || config.blogInfo.url} />
+    </Helmet>
   )
 }
 
