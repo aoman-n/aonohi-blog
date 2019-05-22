@@ -4,19 +4,53 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import PostMetaInfo from '../components/PostMetaInfo'
 import ScrollSyncToc from '../components/ScrollSyncToc'
+import SEO from '../components/SEO'
 import { color, mixin } from '../styles'
+
+export const query = graphql`
+  query($slug: String!) {
+    contentfulPost(slug: { eq: $slug }) {
+      title
+      publishedAt(formatString: "YYYY/MM/DD")
+      author {
+        name
+        avatar {
+          fixed {
+            src
+            width
+            height
+          }
+        }
+      }
+      tags
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
+`
 
 const Post: FC<any> = props => {
   const {
     data,
     location,
-    pageContext: { next, previous, heading, _html },
+    pageContext: { next, previous, heading, _html, slug },
   } = props
+  console.log(props)
   const { title, author, content, publishedAt, tags } = data.contentfulPost
   const { avatar, name } = author
   const { html } = content.childMarkdownRemark
   return (
     <Layout location={location} title={title}>
+      <SEO
+        isRoot={false}
+        title={title}
+        description="test"
+        postUrl="test"
+        postDate="test"
+      />
       <Header>
         <HeadInner>
           <HeadContent>
@@ -167,31 +201,6 @@ const Logly = styled.ul`
 const PageLink = styled(Link)`
   font-weight: bold;
   color: ${color.darkBlue};
-`
-
-export const query = graphql`
-  query($slug: String!) {
-    contentfulPost(slug: { eq: $slug }) {
-      title
-      publishedAt(formatString: "YYYY/MM/DD")
-      author {
-        name
-        avatar {
-          fixed {
-            src
-            width
-            height
-          }
-        }
-      }
-      tags
-      content {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-  }
 `
 
 export default Post
