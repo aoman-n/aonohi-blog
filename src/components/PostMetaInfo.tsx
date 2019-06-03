@@ -16,7 +16,7 @@ const PostMetaInfo: FC<PostMetaInfoProps> = ({ tags, date, color }) => (
     <Date color={color}>{date}</Date>
     <Tags>
       {tags.map(tag => (
-        <Tag to={`/tags/${tag.toLowerCase()}`}>
+        <Tag key={tag} to={`/tags/${tag.toLowerCase()}`}>
           <TagText>{tag}</TagText>
           <FontAwesomeIcon icon={faTag} size="sm" />
         </Tag>

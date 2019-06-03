@@ -4,19 +4,53 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import PostMetaInfo from '../components/PostMetaInfo'
 import ScrollSyncToc from '../components/ScrollSyncToc'
+import SEO from '../components/SEO'
 import { color, mixin } from '../styles'
+
+export const query = graphql`
+  query($slug: String!) {
+    contentfulPost(slug: { eq: $slug }) {
+      title
+      publishedAt(formatString: "YYYY/MM/DD")
+      author {
+        name
+        avatar {
+          fixed {
+            src
+            width
+            height
+          }
+        }
+      }
+      tags
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
+`
 
 const Post: FC<any> = props => {
   const {
     data,
     location,
-    pageContext: { next, previous, heading, _html },
+    pageContext: { next, previous, heading, _html, slug },
   } = props
+  console.log(props)
   const { title, author, content, publishedAt, tags } = data.contentfulPost
   const { avatar, name } = author
   const { html } = content.childMarkdownRemark
   return (
     <Layout location={location} title={title}>
+      <SEO
+        isRoot={false}
+        title={title}
+        description="test"
+        postUrl="test"
+        postDate="test"
+      />
       <Header>
         <HeadInner>
           <HeadContent>
@@ -74,9 +108,9 @@ const Header = styled.header`
 `
 const HeadInner = styled.div`
   display: grid;
+  grid-template-columns: 100px calc(100% - 100px - 300px) 300px;
   width: 100%;
-  grid-template-columns: 80px calc(100% - 80px - 220px) 220px;
-  max-width: 1150px;
+  max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
 `
@@ -86,6 +120,15 @@ const HeadContent = styled.div`
   animation: ${mixin.fadeInDown} 0.4s both 0.3s;
   padding: 1em 1em 0 1em;
   max-width: 720px;
+
+  @media (max-width: 768px) {
+    grid-column: 1 / 4;
+    margin: 0 8vw;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 10px;
+  }
 `
 const BlogTitle = styled.h4`
   text-transform: none;
@@ -119,11 +162,34 @@ const Main = styled.main`
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+  }
 `
 const Article = styled.article`
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   padding: 1em;
+
+  @media (max-width: 1200px) {
+    grid-row: 1 / 3;
+    grid-column: 1 / 3;
+    margin: 0 20px;
+  }
+
+  @media (max-width: 768px) {
+    /* grid-column: 1 / 4; */
+    margin: 0 8vw;
+  }
+
+  @media (max-width: 480px) {
+    /* grid-column: 1 / 4; */
+    margin: 0 10px;
+  }
 `
 const MarkDownStyle = styled.div`
   color: ${color.fontGray};
@@ -131,32 +197,21 @@ const MarkDownStyle = styled.div`
   ${mixin.markdownStyle}
 `
 const NavBar = styled.nav`
-  /* color: ${color.darkGray};
-  position: sticky;
-  max-height: 100vh;
-  overflow-y: auto;
-  will-change: transform;
-  grid-column: 3 / 4;
-  grid-row: 1 / 2; */
   position: sticky;
   position: -webkit-sticky;
   max-height: 100vh;
   overflow-y: auto;
   will-change: transform;
   top: 12px;
-  padding: 12px;
-  margin-top: 64px;
+  padding: 12px 24px;
+  margin-top: 34px;
   grid-column: 3/4;
   grid-row: 1/2;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
-// const NavBarInner = styled.div`
-//   position: sticky;
-//   top: 20px;
-//   padding: 15px;
-//   /* background: ${color.lightBrown}; */
-//   /* border-radius: 4px; */
-//   /* box-shadow: 0 2px 2px 0px rgba(0,0,0,0.2); */
-// `
 const Logly = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -167,31 +222,6 @@ const Logly = styled.ul`
 const PageLink = styled(Link)`
   font-weight: bold;
   color: ${color.darkBlue};
-`
-
-export const query = graphql`
-  query($slug: String!) {
-    contentfulPost(slug: { eq: $slug }) {
-      title
-      publishedAt(formatString: "YYYY/MM/DD")
-      author {
-        name
-        avatar {
-          fixed {
-            src
-            width
-            height
-          }
-        }
-      }
-      tags
-      content {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-  }
 `
 
 export default Post

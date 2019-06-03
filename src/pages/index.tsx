@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import PostCell from '../components/PostCell'
-import SEO from '../components/seo'
+import SEO from '../components/Seo'
 import SideBar from '../components/SideBar'
 import { color } from '../styles'
 
@@ -15,10 +15,7 @@ const IndexPage: FC<any> = props => {
   const { title, description, author } = data.site.siteMetadata
   return (
     <Layout title={siteTitle} location={location}>
-      <SEO
-        title="All posts"
-        keywords={[`Gatsby`, `Application`, `React`, `Ruby`, `Ruby on Rails`]}
-      />
+      <SEO isRoot={true} />
       <BackgroundFlame>
         <Container>
           <Articles>

@@ -1,26 +1,30 @@
 interface UserInfoTypes {
-  name: string
+	avatarUrl: string
+	githubUrl: string
+	name: string
   nickname: string
-  avatarUrl: string
-  githubUrl: string
-  twitterUrl: string
+  twitterName: string
+	twitterUrl: string
 }
 
 interface BlogInfo {
-  url: string
-  title: string
+  description: string
+	url: string
+	title: string
 }
 
 export const userInfo: UserInfoTypes = {
-  name: 'Hiroaki Aoba',
+	avatarUrl: 'https://s3-ap-northeast-1.amazonaws.com/aohiro-blog/User/avatar/dot.jpg',
+	githubUrl: 'https://github.com/laster18',
+	name: 'Hiroaki Aoba',
   nickname: 'aohiro',
-  avatarUrl:
-    'https://s3-ap-northeast-1.amazonaws.com/aohiro-blog/User/avatar/dot.jpg',
-  githubUrl: 'https://github.com/laster18',
-  twitterUrl: 'https://twitter.com/aohiro01',
+  twitterName: 'aohiro',
+	twitterUrl: 'https://twitter.com/aohiro01',
 }
 
 export const blogInfo: BlogInfo = {
-  title: 'Aonohi Blog',
-  url: 'http://localhost:8000/',
+  description: 'Webエンジニアの技術ブログ',
+	title: 'Aonohi Blog',
+	url: 'https://aonohi.com',
+	// url: 'http://localhost:8000/',
 }
