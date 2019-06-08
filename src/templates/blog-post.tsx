@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import PostMetaInfo from '../components/PostMetaInfo'
 import ScrollSyncToc from '../components/ScrollSyncToc'
-import SEO from '../components/SEO'
+import SEO from '../components/Seo'
 import { color, mixin } from '../styles'
 
 export const query = graphql`
