@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { color, mixin } from '../styles'
+import { Color, mixin } from '../styles'
 
 interface PostCellProps {
   post: any
@@ -13,6 +13,7 @@ interface PostCellProps {
 const PostCell: FC<PostCellProps> = ({ post }) => {
   const { title, author, content, tags, slug, publishedAt } = post
   const desc = content.childMarkdownRemark.excerpt.slice(0, 80)
+
   return (
     <Container>
       <div>
@@ -40,17 +41,13 @@ const Container = styled.div`
 const Tag = styled(Link)`
   color: white;
   font-size: 0.8em;
-  background: ${color.darkGray};
-  border: 1px solid white;
+  background: ${Color.FONT.BASE};
   box-sizing: border-box;
   border-radius: 3px 6px 3px 6px;
   padding: 4px 8px;
   margin-right: 7px;
   :hover {
-    transition: 0.2s;
-    color: ${color.darkGray};
-    background: white;
-    border: 1px solid ${color.darkGray};
+    opacity: 0.8;
   }
 `
 const TagText = styled.span`
@@ -59,21 +56,21 @@ const TagText = styled.span`
 const PostLink = styled(Link)`
   text-decoration: none;
   box-shadow: none;
-  color: ${color.fontGray};
+  color: ${Color.FONT.TITLE};
   :hover {
-    > h3 {
-      color: ${color.darkBlue};
+    > h3, p, small {
+      color: ${Color.FONT.CHECKED};
     }
   }
 `
 const Title = styled.h3`
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin-top: 15px;
   margin-bottom: 7px;
 `
 const Description = styled.p`
   opacity: 0.63;
-  font-size: 14px;
+  font-size: 0.9em;
   line-height: 1.6;
   word-break: break-all;
   overflow-y: hidden;
@@ -83,7 +80,7 @@ const Description = styled.p`
 const Day = styled.small`
   opacity: 0.63;
   margin: 0;
-  font-size: 14px;
+  font-size: 0.8em;
   line-height: 1.6;
   word-break: break-all;
   overflow-y: hidden;

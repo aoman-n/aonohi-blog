@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 import PostMetaInfo from '../components/PostMetaInfo'
 import ScrollSyncToc from '../components/ScrollSyncToc'
 import SEO from '../components/Seo'
-import { color, mixin } from '../styles'
+import { Color, mixin } from '../styles'
 
 export const query = graphql`
   query($slug: String!) {
@@ -38,12 +38,12 @@ const Post: FC<any> = props => {
     location,
     pageContext: { next, previous, heading, _html, slug },
   } = props
-  console.log(props)
   const { title, author, content, publishedAt, tags } = data.contentfulPost
   const { avatar, name } = author
   const { html } = content.childMarkdownRemark
+
   return (
-    <Layout location={location} title={title}>
+    <Layout location={location} title="あおのひ.com">
       <SEO
         isRoot={false}
         title={title}
@@ -85,9 +85,7 @@ const Post: FC<any> = props => {
           </Logly>
         </Article>
         <NavBar>
-          {/* <NavBarInner> */}
-            <ScrollSyncToc heading={heading} />
-          {/* </NavBarInner> */}
+          <ScrollSyncToc heading={heading} />
         </NavBar>
       </Main>
     </Layout>
@@ -192,7 +190,7 @@ const Article = styled.article`
   }
 `
 const MarkDownStyle = styled.div`
-  color: ${color.fontGray};
+  color: ${Color.FONT.BASE};
   animation: ${mixin.fadeInDown} 0.4s both 0.3s;
   ${mixin.markdownStyle}
 `
@@ -221,7 +219,7 @@ const Logly = styled.ul`
 `
 const PageLink = styled(Link)`
   font-weight: bold;
-  color: ${color.darkBlue};
+  color: ${Color.FONT.CHECKED};
 `
 
 export default Post

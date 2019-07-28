@@ -7,12 +7,12 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { userInfo } from '../constants'
-import { color } from '../styles'
+import { Color } from '../styles'
 
 // import { StaticQuery, graphql } from "gatsby"
 // import Image from "gatsby-image"
 
-const SideBar: any = () => {
+const SideBar: FC<any> = () => {
   return (
     <Base>
       <SideSectionTitle>PROFILE</SideSectionTitle>
@@ -36,7 +36,7 @@ const SideBar: any = () => {
 const Base = styled.aside`
   box-sizing: border-box;
   padding: 20px 12px;
-  background: ${color.lightBrown};
+  background: ${Color.BROWN.SUPER_LIGHT};
   border-radius: 4px;
   box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2);
 `
@@ -54,12 +54,12 @@ const IconLink = styled.a`
   display: inline-block;
   box-shadow: none;
   padding: 0.1em 0.5em;
-  border-bottom: 2px solid ${color.lightBrown};
+  border-bottom: 2px solid ${Color.BROWN.SUPER_LIGHT};
   cursor: pointer;
   :hover {
-    border-bottom: 2px solid ${color.darkBlue};
+    border-bottom: 2px solid ${Color.FONT.CHECKED};
     > svg {
-      color: ${color.darkBlue};
+      color: ${Color.FONT.CHECKED};
     }
   }
 `

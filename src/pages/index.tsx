@@ -13,44 +13,38 @@ const IndexPage: FC<any> = props => {
   const posts = data.allContentfulPost.edges
   const siteTitle = data.site.siteMetadata.title
   const { title, description, author } = data.site.siteMetadata
+
   return (
     <Layout title={siteTitle} location={location}>
       <SEO isRoot={true} />
-      <BackgroundFlame>
-        <Container>
-          <Articles>
-            {posts.map(({ node }) => (
-              <PostCell post={node} key={node.id} />
-            ))}
-          </Articles>
-          <Nav>
-            <SideBar />
-          </Nav>
-        </Container>
-      </BackgroundFlame>
+      <Container>
+        <Articles>
+        {posts.map(({ node }) => (
+            <PostCell post={node} key={node.id} />
+          ))}
+        </Articles>
+        <Nav>
+          <SideBar />
+        </Nav>
+      </Container>
     </Layout>
   )
 }
-const BackgroundFlame = styled.div`
-  /* background: ${color.lightBrown}; */
-  /* background: white; */
-`
+
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
-  max-width: 900px;
+  max-width: 1100px;
+  width: 90%;
   margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
 `
 const Articles = styled.main`
-  max-width: 700px;
-  min-width: 400px;
-  padding: 20px 0;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: calc(100% - 320px);
+  margin-right: 100px;
 `
 const Nav = styled.nav`
-  width: 28%;
+  width: 320px;
 `
 
 export const query = graphql`

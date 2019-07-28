@@ -7,7 +7,7 @@ import styled, { css } from 'styled-components'
 import Layout from '../components/Layout'
 import PostCell from '../components/PostCell'
 import SideBar from '../components/SideBar'
-import { color } from '../styles'
+import { Color } from '../styles'
 
 const TagPage: FC<any> = props => {
   const { tag, allTags } = props.pageContext
@@ -15,6 +15,7 @@ const TagPage: FC<any> = props => {
   const { title } = props.data.site.siteMetadata
   const posts = props.data.allContentfulPost.edges
   const postCount = posts.length
+
   return (
     <Layout location={location} title={title}>
       <Container>
@@ -23,9 +24,9 @@ const TagPage: FC<any> = props => {
             <StrongText withUnderLine={true}>{tag} </StrongText>に関する記事{' '}
             <StrongText>{postCount}</StrongText> 件
           </SectionTitle>
-          {posts.map(({ node }) => (
-            <PostCell key={node.id} post={node} />
-          ))}
+            {posts.map(({ node }) => (
+              <PostCell key={node.id} post={node} />
+            ))}
           <AllTagList>
             <SectionTitle>タグ一覧</SectionTitle>
             <TagListFrame>
@@ -51,25 +52,23 @@ interface StrongTextProps {
 }
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
-  max-width: 900px;
+  max-width: 1100px;
+  width: 90%;
   margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
 `
 const Articles = styled.main`
-  max-width: 700px;
-  min-width: 400px;
-  padding: 20px 0;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: calc(100% - 320px);
+  margin-right: 100px;
 `
 const SectionTitle = styled.div`
   color: #808080;
   padding: 20px 0;
 `
 const StrongText = styled.span<StrongTextProps>`
-  color: ${color.fontGray};
+  color: ${Color.FONT.BASE};
   font-size: 1.3em;
   font-weight: bold;
   text-decoration: ${props => (props.withUnderLine ? `underline` : `none`)};
@@ -80,7 +79,6 @@ const AllTagList = styled.section`
 const TagListFrame = styled.div`
   border: 2px solid #eee;
   border-radius: 4px;
-  min-height: 85px;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -89,24 +87,24 @@ const TagListFrame = styled.div`
 const Tag = styled(Link)`
   color: white;
   font-size: 0.8em;
-  background: ${color.darkGray};
+  background: ${Color.FONT.BASE};
   border: 1px solid white;
   box-sizing: border-box;
   border-radius: 3px 6px 3px 6px;
   padding: 4px 8px;
   margin-right: 7px;
+  transition: 0.1s;
   :hover {
-    transition: 0.2s;
-    color: ${color.darkGray};
+    color: ${Color.FONT.BASE};
     background: white;
-    border: 1px solid ${color.darkGray};
+    border: 1px solid ${Color.FONT.BASE};
   }
 `
 const TagText = styled.span`
   margin-right: 5px;
 `
 const Nav = styled.nav`
-  width: 28%;
+  width: 320px;
 `
 
 export const pageQuery = graphql`

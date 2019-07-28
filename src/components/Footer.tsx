@@ -8,7 +8,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { blogInfo, userInfo } from '../constants'
-import { color, mixin } from '../styles'
+import { Color, mixin } from '../styles'
 
 interface FooterProps {
   isRoot: boolean
@@ -40,7 +40,7 @@ const Container = styled.footer`
   ${mixin.flexColumnCenter}
   min-height: 140px;
   width: 100vw;
-  background: ${color.lightGray};
+  background: ${Color.FONT.LIGHT};
   text-align: center;
 `
 const Inner = styled.div`
@@ -53,7 +53,7 @@ const IconLink = styled.a`
   cursor: pointer;
   :hover {
     > svg {
-      color: ${color.darkBlue};
+      color: ${Color.THEME.PRIMARY};
     }
   }
 `
@@ -65,8 +65,8 @@ const BlogTitle = styled.h4`
   text-transform: none;
 `
 const StyledLink = styled(Link)`
-  box-shadow: 1px solid ${color.darkBlue};
-  color: ${color.darkBlue};
+  box-shadow: 1px solid ${Color.FONT.CHECKED};
+  color: ${Color.FONT.CHECKED};
   :hover {
     opacity: 0.7;
   }

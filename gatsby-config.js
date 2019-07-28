@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Aonohi Blog',
+    title: 'あおのひ.com',
     author: 'Hiroaki Aoba',
-    description: 'Web developer tech blog.',
+    description: 'Webエンジニアのブログ。勉強したことなどを書いてます。',
     siteUrl: 'https://aonohi.com/blog',
   },
   plugins: [
