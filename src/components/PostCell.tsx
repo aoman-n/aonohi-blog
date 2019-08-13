@@ -12,7 +12,7 @@ interface PostCellProps {
 
 const PostCell: FC<PostCellProps> = ({ post }) => {
   const { title, author, content, tags, slug, publishedAt } = post
-  const desc = content.childMarkdownRemark.excerpt.slice(0, 80)
+  const desc = content.childMarkdownRemark.excerpt.slice(0, 92)
 
   return (
     <Container>
@@ -43,9 +43,10 @@ const Tag = styled(Link)`
   font-size: 0.8em;
   background: ${Color.FONT.BASE};
   box-sizing: border-box;
-  border-radius: 3px 6px 3px 6px;
-  padding: 4px 8px;
+  border-radius: 2px 8px 2px 8px;
+  padding: 6px 9px;
   margin-right: 7px;
+  text-decoration: none;
   :hover {
     opacity: 0.8;
   }
@@ -64,27 +65,22 @@ const PostLink = styled(Link)`
   }
 `
 const Title = styled.h3`
+  font-weight: 600;
   font-size: 1.2em;
-  margin-top: 15px;
-  margin-bottom: 7px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: ${Color.FONT.TITLE};
 `
 const Description = styled.p`
-  opacity: 0.63;
+  color: ${Color.FONT.LIGHT};
   font-size: 0.9em;
   line-height: 1.6;
-  word-break: break-all;
-  overflow-y: hidden;
-  max-height: ${14 * 1.6 * 3}px;
-  margin: 0;
 `
 const Day = styled.small`
-  opacity: 0.63;
-  margin: 0;
-  font-size: 0.8em;
-  line-height: 1.6;
-  word-break: break-all;
-  overflow-y: hidden;
-  max-height: ${14 * 1.6 * 3}px;
+  display: block;
+  color: ${Color.FONT.LIGHT};
+  font-size: 0.9em;
+  padding-top: 7px;
 `
 
 export default PostCell

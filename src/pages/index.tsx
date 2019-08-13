@@ -32,19 +32,19 @@ const IndexPage: FC<any> = props => {
 }
 
 const Container = styled.div`
-  max-width: 1100px;
-  width: 90%;
+  max-width: 1080px;
+  width: 75%;
   margin: 0 auto;
   padding-top: 40px;
   padding-bottom: 40px;
   display: flex;
 `
 const Articles = styled.main`
-  width: calc(100% - 320px);
-  margin-right: 100px;
+  width: calc(100% - 300px);
+  margin-right: 60px;
 `
 const Nav = styled.nav`
-  width: 320px;
+  width: 300px;
 `
 
 export const query = graphql`

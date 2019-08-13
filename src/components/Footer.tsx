@@ -18,20 +18,20 @@ interface FooterProps {
 const Footer: FC<FooterProps> = ({ isRoot, isTag }) => (
   <Container>
     <Inner>
-      {!isRoot && !isTag && (
-        <Links>
+      <BlogTitle>
+        <StyledLink to="/">{blogInfo.title}</StyledLink>
+      </BlogTitle>
+      <CopyRight>Copyright © 2019. {userInfo.nickname}</CopyRight>
+      {/* {!isRoot && !isTag && ( */}
+        <div>
           <IconLink target="_blank" rel="noopener" href={userInfo.githubUrl}>
             <FontAwesomeIcon icon={faGithubSquare} size="lg" color="#8f8f8f" />
           </IconLink>
           <IconLink target="_blank" rel="noopener" href={userInfo.twitterUrl}>
             <FontAwesomeIcon icon={faTwitterSquare} size="lg" color="#8f8f8f" />
           </IconLink>
-        </Links>
-      )}
-      <BlogTitle>
-        <StyledLink to="/">{blogInfo.title}</StyledLink>
-      </BlogTitle>
-      <CopyRight>Copyright © 2019. {userInfo.nickname}</CopyRight>
+        </div>
+      {/* )} */}
     </Inner>
   </Container>
 )
@@ -48,20 +48,16 @@ const Inner = styled.div`
 `
 const IconLink = styled.a`
   display: inline-block;
-  box-shadow: none;
   padding: 0.1em 0.5em;
   cursor: pointer;
   :hover {
     > svg {
-      color: ${Color.THEME.PRIMARY};
+      color: ${Color.FONT.CHECKED};
     }
   }
 `
-const Links = styled.div`
-  margin-bottom: 15px;
-`
 const BlogTitle = styled.h4`
-  margin: 0;
+  padding-bottom: 8px;
   text-transform: none;
 `
 const StyledLink = styled(Link)`
@@ -71,6 +67,10 @@ const StyledLink = styled(Link)`
     opacity: 0.7;
   }
 `
-const CopyRight = styled.small``
+const CopyRight = styled.small`
+  color: ${Color.FONT.DARK};
+  display: inline-block;
+  padding-bottom: 8px;
+`
 
 export default Footer

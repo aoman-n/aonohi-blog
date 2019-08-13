@@ -31,15 +31,14 @@ interface InnerPorps {
 }
 
 const Container = styled.header`
-  color: white;
   height: ${Size.HEADER_HEIGHT}px;
   width: 100vw;
   background: ${Color.THEME.PRIMARY};
   box-shadow: 0 1px 8px 0 rgba(0,0,0,0.50);
 `
 const Inner = styled.div<InnerPorps>`
-  max-width: 1160px;
-  width: 90%;
+  max-width: 1180px;
+  width: 80%;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -53,16 +52,17 @@ const Inner = styled.div<InnerPorps>`
 `
 const BlogTitle = styled(Link)`
   color: white;
-  font-size: 1.8rem;
-  font-weight: bold;
-  box-shadow: none;
-  /* text-decoration: none; */
+  font-size: 1.8em;
+  font-weight: 700;
+  text-decoration: none;
   :hover {
     opacity: 0.8;
   }
 `
 const Description = styled.small`
-  font-size: 0.8rem;
+  padding-top: 12px;
+  font-size: 0.8em;
+  color: white;
 `
 
 export default Header
